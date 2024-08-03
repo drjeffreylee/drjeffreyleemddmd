@@ -1,0 +1,48 @@
+/*
+        ___                                 
+       /   |_   _____  _________ _____ ____
+      / /| | | / / _ \/ ___/ __ `/ __ `/ _ \
+     / ___ | |/ /  __/ /  / /_/ / /_/ /  __/
+    /_/  |_|___/\___/_/   \__,_/\__, /\___/
+                               /____/     ™
+                               by Joe Rhoney
+
+    Stylesheet originally written by: @viljamis
+		(http://responsiveslides.com v1.52)
+		Modified for the Average Slides plugin to accomidate
+		the .slides class. Previously used rslides (which is
+		assigned to each slide by JavaScript).
+*/
+
+
+.slides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
+.slides div.slide {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+
+.slides div.slide:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+
+.slides img {
+  display: block;
+  height: auto;
+  float: left;
+  width: 100%;
+  border: 0;
+  }

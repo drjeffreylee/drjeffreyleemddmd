@@ -1,0 +1,447 @@
+
+/*
+    A D D F U N C   S L I D E S   C S S
+    ===================================
+*/
+@font-face {
+  font-family: "aFIcons";
+  src: url("fonts/aFIcons.ttf") format("truetype"),
+       url("fonts/aFIcons.woff") format("woff");
+}
+.addFuncSlides { position: relative; }
+.addFuncSlides.ratio-set:-webkit-full-screen { width: 100%; }
+.addFuncSlides.ratio-set:-moz-full-screen { width: 100%; }
+.addFuncSlides.ratio-set:-ms-full-screen { width: 100%; }
+.addFuncSlides.ratio-set:fullscreen { width: 100%; }
+
+.addFuncSlides>.aFTabs.empty-tabs>li,
+.addFuncSlides>.prev-next-control .prev,
+.addFuncSlides>.prev-next-control .next,
+.addFuncSlides>.pause-control .pause,
+.addFuncSlides>.fullscreen-control .toggle-fullscreen {
+  color: currentColor;
+  font: 400 2.4em/1 aFIcons;
+  cursor: pointer;
+  width: 0;
+  height: 1em;
+  padding: 0 0 0 1em;
+  margin: -0.5em 0 0;
+  margin-left: -2px; /* ? */
+  border: none;
+  outline: none;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  opacity: 0;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  z-index: 100;
+  vertical-align: top;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.addFuncSlides>.aFTabs.empty-tabs>li:before,
+.addFuncSlides>.prev-next-control .prev:before,
+.addFuncSlides>.prev-next-control .next:before,
+.addFuncSlides>.pause-control .pause:before,
+.addFuncSlides>.pause-control .pause:after,
+.addFuncSlides>.fullscreen-control .toggle-fullscreen:before {
+  vertical-align: middle;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+.addFuncSlides>.prev-next-control {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+.addFuncSlides>.prev-next-control .prev:before { content: "\f341"; }
+.addFuncSlides>.prev-next-control .prev {
+  top: 50%;
+  left: 20px;
+  pointer-events: all;
+}
+.addFuncSlides>.prev-next-control .next:before { content: "\f345"; }
+.addFuncSlides>.prev-next-control .next {
+  top: 50%;
+  right: 20px;
+  pointer-events: all;
+}
+.addFuncSlides:hover>.prev-next-control .prev,
+.addFuncSlides:hover>.prev-next-control .next { opacity: 0.6; }
+.addFuncSlides>.prev-next-control .prev:hover,
+.addFuncSlides>.prev-next-control .next:hover { opacity: 1; }
+
+.addFuncSlides>.pause-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  pointer-events: none;
+}
+.addFuncSlides>.pause-control .pause {
+  left: 50%;
+  top: 50%;
+  pointer-events: all;
+  transform: translate(-50%,0);
+}
+.addFuncSlides>.pause-control .pause:before {
+  content: "\f523";
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  transition: transform linear 0.2s, opacity cubic-bezier(1, 0, 0, 1) 0.2s;
+}
+.addFuncSlides>.pause-control .pause:after {
+  content: "\f522";
+  opacity: 0;
+  transform: rotate(-90deg) scale(0);
+  transition: transform linear 0.2s, opacity cubic-bezier(1, 0, 0, 1) 0.2s;
+}
+.addFuncSlides:hover>.pause-control .pause { opacity: 0.6; }
+.addFuncSlides>.pause-control .pause:hover {opacity: 1;}
+.addFuncSlides.stopped>.pause-control .pause,
+.addFuncSlides.paused>.pause-control .pause {}
+.addFuncSlides.stopped>.pause-control .pause:before,
+.addFuncSlides.paused>.pause-control .pause:before {
+  opacity: 0;
+  transform: rotate(90deg) scale(0);
+}
+.addFuncSlides.stopped>.pause-control .pause:after,
+.addFuncSlides.paused>.pause-control .pause:after {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+.addFuncSlides>.aFTabs {
+  pointer-events: none;
+  z-index: 999;
+}
+.addFuncSlides>.aFTabs>li {
+  pointer-events: all;
+}
+.addFuncSlides>.aFTabs.empty-tabs {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: block;
+  position: absolute;
+  left: 1.6em;
+  right: 1.6em;
+  z-index: 2;
+}
+.addFuncSlides>.aFSlides~.aFTabs.empty-tabs {
+  top: auto;
+  bottom: 1.6em;
+}
+.addFuncSlides.tabs-first>.aFTabs.empty-tabs {
+  top: 10px;
+  bottom: auto;
+}
+.addFuncSlides>.aFTabs.empty-tabs>li:before {
+  content: "";
+  width: .4em;
+  height: .4em;
+  border-radius: 50%;
+  border: .04em solid currentColor;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+}
+.addFuncSlides>.aFTabs.empty-tabs>li.current:before {
+  border: .174em solid currentColor;
+}
+.addFuncSlides>.aFTabs.empty-tabs>li {
+  width: .4em;
+  height: .4em;
+  padding: 0;
+  margin: 0 .12em;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  pointer-events: initial;
+}
+.addFuncSlides:hover>.aFTabs.empty-tabs>li { opacity: 0.6; }
+.addFuncSlides>.aFTabs.empty-tabs>li:hover { opacity: 1; }
+.addFuncSlides>.aFTabs>li.current {  }
+
+.addFuncSlides>.aFTabs.labels,
+.addFuncSlides>.aFTabs.thumbnails {
+  text-align: center;
+  margin: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  pointer-events: none;
+  /*position: absolute;
+  left: 0;
+  right: 0;*/
+}
+.addFuncSlides>.aFSlides~.aFTabs.labels,
+.addFuncSlides>.aFSlides~.aFTabs.thumbnails {
+  vertical-align: top;
+  top: 100%;
+  bottom: auto;
+}
+.addFuncSlides.tabs-first>.aFTabs.labels,
+.addFuncSlides.tabs-first>.aFTabs.thumbnails {
+  vertical-align: bottom;
+  top: auto;
+  bottom: 100%;
+}
+.addFuncSlides>.aFTabs.labels:not(.thumbnails) {
+  overflow-x: visible;
+  overflow-y: hidden;
+}
+.addFuncSlides>.aFSlides~.aFTabs.labels:not(.thumbnails) { padding: 0 0 20px; }
+.addFuncSlides.tabs-first>.aFTabs.labels:not(.thumbnails) { padding: 20px 0 0; }
+
+.addFuncSlides>.aFTabs.labels:not(.thumbnails)>li {
+  background: currentColor;
+  width: initial;
+  height: auto;
+  display: inline-block;
+  overflow: visible;
+  cursor: pointer;
+  pointer-events: initial;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.addFuncSlides>.aFSlides~.aFTabs.labels:not(.thumbnails)>li {
+  padding: 20px 12px 5px;
+  margin: -20px 0 0;
+  -webkit-border-bottom-right-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.addFuncSlides.tabs-first>.aFTabs.labels:not(.thumbnails)>li {
+  padding: 0 12px 25px;
+  margin: 0 0 -20px;
+  -webkit-border-top-right-radius: 6px;
+  -webkit-border-top-left-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-topleft: 6px;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+.addFuncSlides>.aFSlides~.aFTabs.labels:not(.thumbnails)>li.current {
+  -moz-transform: translateY(20px);
+  -webkit-transform: translateY(20px);
+  -o-transform: translateY(20px);
+  -ms-transform: translateY(20px);
+  transform: translateY(20px);
+}
+.addFuncSlides.tabs-first>.aFTabs.labels:not(.thumbnails)>li.current {
+  -moz-transform: translateY(-20px);
+  -webkit-transform: translateY(-20px);
+  -o-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+.addFuncSlides>.aFTabs.labels:not(.thumbnails)>li>* {
+  color: #FFF;
+  opacity: 0.6;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.addFuncSlides>.aFTabs.thumbnails { padding: 10px 0; }
+.addFuncSlides>.aFTabs.labels>li:hover>* { opacity: 1; }
+.addFuncSlides>.aFTabs.labels:not(.thumbnails)>li.current>* { opacity: 1; }
+
+.addFuncSlides>.aFTabs.thumbnails>li {
+  vertical-align: top;
+  width: initial;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  overflow: visible;
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: initial;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.addFuncSlides>.aFTabs.thumbnails>li img {
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  max-height: 100px;
+  border: 2px solid rgba(255,255,255,0);
+  border-radius: 1px;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.addFuncSlides>.aFTabs.thumbnails>li:hover img { border: 2px solid rgba(255,255,255,0.6); }
+
+.addFuncSlides>.aFTabs.thumbnails>li.current img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.addFuncSlides>.fullscreen-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+.addFuncSlides>.fullscreen-control .toggle-fullscreen {
+  right: 20px;
+  bottom: 20px;
+  pointer-events: all;
+}
+.addFuncSlides>.fullscreen-control .toggle-fullscreen:before { content: "\f211"; }
+.addFuncSlides:hover>.fullscreen-control .toggle-fullscreen { opacity: 0.6; }
+.addFuncSlides>.fullscreen-control .toggle-fullscreen:hover { opacity: 1; }
+
+.addFuncSlides>.slideset {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.addFuncSlides figure { margin: 0; }
+
+.addFuncSlides>.slideset>.slide {
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+.addFuncSlides .slide.current {
+  position: relative;
+  z-index: 1;
+}
+.addFuncSlides img {
+  width: auto;
+  height: auto;
+  margin-bottom: 0;
+}
+/*
+    TRANSITIONS
+*/
+.slide-content>.move-left,
+.slide-content>.move-right,
+.slide-content>.move-up,
+.slide-content>.move-down,
+.slide-content>.turn-clock,
+.slide-content>.turn-cntr-clock {
+  -webkit-transition: all 2s;
+  transition: all 2s;
+}
+
+.addFuncSlides .slide.of-content img {
+  max-width: 100%;
+}
+.addFuncSlides .slide.current .slide-content>* {
+  -webkit-transform: rotate(0deg) translate(0,0) !important;
+  transform: rotate(0deg) translate(0,0) !important;
+}
+/*
+    SLIDE TYPE: IMAGERY
+*/
+.addFuncSlides .slide.of-imagery .slide-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.addFuncSlides .slide.of-imagery .slide-content>* {
+  position: absolute;
+}
+.addFuncSlides .slide.of-imagery .slide-content>p,
+.addFuncSlides .slide.of-imagery .slide-content>div,
+.addFuncSlides .slide.of-imagery .slide-content>span {
+  padding: 0;
+  margin: 0;
+}
+.addFuncSlides .slide.of-imagery .slide-lyr-wrap {
+  transform-origin: top left;
+  pointer-events: none;
+  perspective: inherit;
+}
+.addFuncSlides .slide.of-imagery .slide-lyr-inner {
+  padding: 0;
+  margin: 0;
+  display: block;
+  position: relative;
+  pointer-events: none;
+  perspective: inherit;
+}
+.addFuncSlides .slide.of-imagery .slide-lyr-link {
+  display: block;
+}
+.addFuncSlides .slide.of-imagery .match-height svg,
+.addFuncSlides .slide.of-imagery .match-height img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.addFuncSlides svg polygon,
+.addFuncSlides svg circle,
+.addFuncSlides svg rect,
+.addFuncSlides svg path {
+  fill: currentColor !important;
+}
+.addFuncSlides .slide.of-imagery .slide-lyr-wrap a,
+.addFuncSlides .slide.of-imagery .slide-lyr-inner a {
+  pointer-events: all;
+}
+.addFuncSlides .slide.of-imagery .spread-lyr {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.addFuncSlides .slide.of-imagery .spread-lyr .slide-lyr-content {
+  height: 100% !important;
+}
+.addFuncSlides .slide.of-imagery .slide-lyr-content {
+  padding: 0;
+  margin: 0;
+  display: block;
+  transform-origin: center;
+  perspective: inherit;
+}
+.addFuncSlides .slide.of-imagery .link-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/*
+    SLIDE TYPE: CONTENT
+*/
+.addFuncSlides .slide.of-content .slide-content {
+  overflow-y: auto;
+}
